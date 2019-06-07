@@ -4,12 +4,11 @@ var q = [], a1 = [], a2= [], a3 = [], a4 = []
 // for question and answer array traversal
 var iterator = 0
 // interval variable for timer function
-var inter
-valID
+var intervalID
 //sets timer to 30 secons
 var number =30
 //boolean for timer control initialized to false
-var running =  false
+var running =  false, check = false
 //correct and incorrect answer count
 var correct = 0, incorrect = 0, noAnswer = 0
 
@@ -19,12 +18,12 @@ var gameObject = {
     calls:function(){
         gameObject.stop()
         gameObject.timerReset()
+        gameObject.timer()
 
-        iterator++
+        iterator
+        gameObject.questionsIterator()
         console.log("count me!")
-        console.log(iterator)
-        
-    },
+            },
 
     questionsIterator:function(){
         // checks to see if we reached the end of the array
@@ -36,23 +35,23 @@ var gameObject = {
         //TODO: randomize answer choices
         $(".answers1").on("click",function(){
             gameObject.calls()
-            correct++
+            correct
             
             
         })
         $(".answers2").on("click",function(){
             gameObject.calls()
-            incorrect++
+            incorrect
             
          })
          $(".answers3").on("click",function(){
             gameObject.calls()
-            incorrect++
+            incorrect
             
          })
          $(".answers4").on("click",function(){
             gameObject.calls()
-            incorrect++
+            incorrect
             
          })
         $(".answers1").html("<b>"+ a1[iterator] +"</b>")
