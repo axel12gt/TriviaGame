@@ -17,14 +17,33 @@ var gameObject = {
 
     questionsIterator:function(){
         // checks to see if we reached the end of the array
+        if(iterator < q.length){
         //calls the object questions and iterates through trivia questions
-        $(".questions").html("<b>"+ q[0] + "</b>")
+        $(".questions").html("<b>"+ q[iterator] +"</b>")
         //calls the answers
         //TODO: randomize answer choices
+        $(".answers1").on("click",function(){
+           correct++
+           console.log(correct) 
+        })
+        $(".answers2").on("click",function(){
+            incorrect++
+            console.log(correct) 
+         })
+         $(".answers3").on("click",function(){
+            incorrect++
+            console.log(correct) 
+         })
+         $(".answers4").on("click",function(){
+            incorrect++
+            console.log(correct) 
+         })
+        $(".answers1").html("<b>"+ a1[iterator] +"</b>")
         $(".answers1").html("<b>"+ a1[iterator] +"</b>")
         $(".answers2").html("<b>"+ a2[iterator] +"</b>")
         $(".answers3").html("<b>"+ a3[iterator] +"</b>")
         $(".answers4").html("<b>"+ a4[iterator] +"</b>")
+        }
         
         
     },
@@ -47,7 +66,7 @@ var gameObject = {
              a4.push(response.results[i].incorrect_answers[2])
             }
 
-             console.log(q[0],a1,a2,a3,a4)
+             console.log(q,a1,a2,a3,a4)
              gameObject.questionsIterator()
         })
     },
@@ -76,14 +95,16 @@ var gameObject = {
         //checks if number = 0 and gives commands after that
         if(number == 0){
             // calls stop function to stop the tiemr
-            this.stop()
+            gameObject.stop()
             //iterator for questions and answers increases by 1
             //chooses next question
             iterator++
             //increases noAnswer by 1
             noAnswer++
             //calls question iterator to display next question
-            this.questionsIterator()
+            gameObject.timerReset()
+            gameObject.questionsIterator()
+            gameObject.timer()
         }
     },
     //Timer reset
@@ -101,6 +122,7 @@ var gameObject = {
 
 }
 gameObject.jax()
+gameObject.timer()
 
 
 
