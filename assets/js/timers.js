@@ -4,7 +4,8 @@ var q = [], a1 = [], a2= [], a3 = [], a4 = []
 // for question and answer array traversal
 var iterator = 0
 // interval variable for timer function
-var intervalID
+var inter
+valID
 //sets timer to 30 secons
 var number =30
 //boolean for timer control initialized to false
@@ -14,29 +15,45 @@ var correct = 0, incorrect = 0, noAnswer = 0
 
 
 var gameObject = {
+    //all the function calls for the answers array
+    calls:function(){
+        gameObject.stop()
+        gameObject.timerReset()
+
+        iterator++
+        console.log("count me!")
+        console.log(iterator)
+        
+    },
 
     questionsIterator:function(){
         // checks to see if we reached the end of the array
-        if(iterator < q.length){
+        if(iterator < 10){
         //calls the object questions and iterates through trivia questions
+
         $(".questions").html("<b>"+ q[iterator] +"</b>")
         //calls the answers
         //TODO: randomize answer choices
         $(".answers1").on("click",function(){
-           correct++
-           console.log(correct) 
+            gameObject.calls()
+            correct++
+            
+            
         })
         $(".answers2").on("click",function(){
+            gameObject.calls()
             incorrect++
-            console.log(correct) 
+            
          })
          $(".answers3").on("click",function(){
+            gameObject.calls()
             incorrect++
-            console.log(correct) 
+            
          })
          $(".answers4").on("click",function(){
+            gameObject.calls()
             incorrect++
-            console.log(correct) 
+            
          })
         $(".answers1").html("<b>"+ a1[iterator] +"</b>")
         $(".answers1").html("<b>"+ a1[iterator] +"</b>")
@@ -94,11 +111,12 @@ var gameObject = {
         $(".seconds").html("<h2>"+ number + "<h2>")
         //checks if number = 0 and gives commands after that
         if(number == 0){
+            console.log("Is this counting")
             // calls stop function to stop the tiemr
             gameObject.stop()
             //iterator for questions and answers increases by 1
             //chooses next question
-            iterator++
+            
             //increases noAnswer by 1
             noAnswer++
             //calls question iterator to display next question
@@ -152,7 +170,7 @@ gameObject.timer()
 //     questionsIterator()
     
 //     if(iterator < (questions.q.length-1) ){
-//     iterator++
+//     
     
 //     }
 // })
