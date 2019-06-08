@@ -18,11 +18,12 @@ var gameObject = {
     calls:function(){
         gameObject.stop()
         gameObject.timerReset()
-        gameObject.timer()
 
-        iterator
+
+        iterator++
         gameObject.questionsIterator()
         console.log("count me!")
+        gameObject.timer()
             },
 
     questionsIterator:function(){
@@ -139,7 +140,7 @@ var gameObject = {
 
 }
 gameObject.jax()
-gameObject.timer()
+
 
 
 
